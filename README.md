@@ -8,6 +8,13 @@ The auditable crypto core of [Cryptile](https://cryptile.app), an encrypted phot
 - `CryptileCore/` is the Swift package. `swift test` proves byte-equality with the vectors on every change (see the workflow).
 - `docs/THREAT-MODEL.md` says what the design protects against, what it does not, and what we tell users.
 
+## Try the beta
+
+Cryptile is in TestFlight while we finish it: https://testflight.apple.com/join/Cj14H3HY
+(if the link says the beta is unavailable, Apple is still reviewing the latest build).
+Testers who send real feedback get Cryptile Plus for life at launch. Details, and what to
+test, at https://cryptile.app/beta/.
+
 ## The construction, in one screen
 
 ```
