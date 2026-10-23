@@ -44,3 +44,7 @@ number of vaults, file sizes/counts, recovery phrases, Cryptile Send identity ke
 - Day 0: spec + reference + vectors public on GitHub (Apache-2.0 for CryptileCore).
 - Day 30: solicit review (Cure53 / Trail of Bits quote; or a public bounty if cost > $5k).
 - Ongoing: `SECURITY.md` with a disclosure address and 90-day fix commitment.
+
+## Pattern minimum (2026-10-23)
+
+A new vault requires at least 6 cells (app rule, not a core rule; existing vaults open with whatever pattern made them). The lock screen recommends 8 or more. Rough offline-guessing cost against an attacker holding the files and the device salt, PBKDF2-SHA512 at 600,000 iterations on a large GPU rig: 4 cells seconds, 6 cells minutes, 8 cells hours, 10 cells about a week, 12 or more years. Without the device salt (any backup, iCloud, Apple) the pattern cannot be guessed; the recovery phrase (96 bits) is the only way in.
