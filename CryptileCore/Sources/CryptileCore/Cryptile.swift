@@ -276,12 +276,20 @@ public struct IndexEntry: Codable, Equatable, Sendable {
     /// Text recognised on-device at import (photos via Vision, PDFs via PDFKit), kept here so it
     /// is encrypted with the index and searchable without ever leaving the device. Omitted when nil.
     public var text: String?
+    /// Where and when the photo or video was taken, read from its own metadata at import and
+    /// kept only here, inside the encrypted index. Omitted when the file carries none.
+    public var lat: Double?
+    public var lon: Double?
+    public var taken: Int?
     public init(id: String, name: String, mime: String, size: Int, created: Int, blob: String, thumb: String,
-                folder: String? = nil, favorite: Bool? = nil, text: String? = nil) {
+                folder: String? = nil, favorite: Bool? = nil, text: String? = nil,
+                lat: Double? = nil, lon: Double? = nil, taken: Int? = nil) {
         self.id = id; self.name = name; self.mime = mime; self.size = size
         self.created = created; self.blob = blob; self.thumb = thumb; self.folder = folder
-        self.favorite = favorite; self.text = text
+        self.favorite = favorite; self.text = text; self.lat = lat; self.lon = lon; self.taken = taken
     }
+    /// Capture time when known, otherwise the import time. Date sorting uses this.
+    public var when: Int { taken ?? created }
 }
 
 /// The decrypted index document. `mk_recovery` lets the recovery phrase alone open the vault
