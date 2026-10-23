@@ -1,0 +1,23 @@
+name: CryptileCore tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  swift-test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: xcodebuild -version && swift --version
+      - name: Reference vectors match the committed copy
+        run: cmp reference/vectors.json CryptileCore/Tests/CryptileCoreTests/Resources/vectors.json
+      - name: swift test
+        working-directory: CryptileCore
+        shell: bash   # pipefail, so a failed build or test fails the job despite tee
+        run: swift test 2>&1 | tee swift-test.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: swift-test-log
+          path: CryptileCore/swift-test.log
