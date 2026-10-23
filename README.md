@@ -2,7 +2,7 @@
 
 The auditable crypto core of [Cryptile](https://cryptile.app), an encrypted photo, video and document vault for iPhone and iPad. Pure Swift on Apple CryptoKit/CommonCrypto; no third-party dependencies, no network.
 
-**Why this is public:** a vault app's security claims should be checkable. This repository is what the app ships, with the byte-level specification and the test vectors that prove the Swift matches it.
+**Why this is public:** a vault app's security claims should be checkable. This repository is what the app ships, with the byte-level specification and the test vectors that prove the Swift matches it. It is published for audit: read it, run it, break it, tell us. It is not licensed for reuse in other products (see LICENSE).
 
 - `reference/cryptile_ref.py` is the executable specification. It generates `reference/vectors.json`.
 - `CryptileCore/` is the Swift package. `swift test` proves byte-equality with the vectors on every change (see the workflow).
@@ -36,4 +36,4 @@ cd CryptileCore && swift test              # every vector must pass (macOS, Xcod
 
 Reports of anything wrong: security@cryptile.app (or open an issue). We publish what we fix.
 
-Apache-2.0. Copyright Brelsford Software LLC.
+PolyForm Noncommercial License 1.0.0: free to read, run, test and verify; not for commercial reuse. Copyright Brelsford Software LLC.
